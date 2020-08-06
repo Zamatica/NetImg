@@ -1,3 +1,12 @@
 {
-    "tshark_location" : "/c/Program Files/Wireshark/tshark.exe"
+    "wire": {
+        "tshark_location" : "/c/Program Files/Wireshark/tshark.exe"
+    },
+
+    "image" : {
+        "FRAME_SIZE_X" : 1024,
+        "FRAME_SIZE_Y" : 1024,
+
+         "PIXEL_STYLE" : "RGB"
+    }
 }

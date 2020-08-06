@@ -1,12 +1,28 @@
+import os
 
-
-import wire
 import settings
 
+import image
+import wire
 
-config = settings.Settings('config.json')
+
+# Setup
+def setup():
+    if (os.path.exists('output') == False):
+        os.mkdir('output')
+
+    return settings.Settings('config.json')
 
 
-wire_data = wire.Wire(config)
+# Main
+def main():
+    config = setup()
 
-wire_data.run(print)
+    imageWriter = image.ImageWriter(config['image'])
+
+    wire_data = wire.Wire(config['wire'], config.system)
+
+    wire_data.run(imageWriter.callback)
+
+main()
+
