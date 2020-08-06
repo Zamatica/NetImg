@@ -25,16 +25,19 @@ class Wire:
         data = PickleDump()
 
         for packet in self.capture.sniff_continuously():
-            print()
             data.reset()
 
             if packet.transport_layer == 'TCP':
-                pickle.dump(packet.tcp.payload, data)
-
+                try:
+                    pickle.dump(packet.tcp.payload, data)
+                except Exception:
+                    pass
             elif packet.transport_layer == 'UDP':
+                try:
                     pickle.dump(packet.data.data, data)
-            else:
-                print(packet.transport_layer)
+                except Exception:
+                    pass
             
-            callback(data.data)
+            if (len(data.data)):
+                callback(data.data)
 

@@ -46,6 +46,3 @@ class ImageWriter:
         png.from_array(self.frame, self.PIXEL_STYLE).save(filename)
         self.current_image += 1
 
-        if (self.current_image >= 10):
-            exit(0)
-
